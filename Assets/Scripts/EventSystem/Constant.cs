@@ -1,0 +1,23 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public static class Constant
+{
+    public static readonly string ACTION_SHOW_OBJECT = "show-object";
+    public static readonly string ACTION_HIDE_OBJECT = "hide-object";
+    public static readonly string ACTION_ROTATE_OBJECT = "rotate-object";
+
+    public static readonly string COMPARATOR_EQUAL = "equal";
+    public static readonly string COMPARATOR_GREATER_THAN = "greater_than";
+    public static readonly string COMPARATOR_LESS_THAN = "less_than";
+    public static readonly string COMPARATOR_GREATER_THAN_OR_EQUAL = "greater_than_or_equal";
+    public static readonly string COMPARATOR_LESS_THAN_OR_EQUAL = "less_than_or_equal";
+
+    public static readonly string OPERATOR_ADD = "add";
+    public static readonly string OPERATOR_MINUS = "minus";
+    public static readonly string OPERATOR_MULTIPLY = "multiply";
+    public static readonly string OPERATOR_DIV = "div";
+    public static readonly string OPERATOR_MOD = "mod";
+    public static readonly string OPERATOR_SET = "set";
+}
