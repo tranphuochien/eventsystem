@@ -20,4 +20,11 @@ public static class Constant
     public static readonly string OPERATOR_DIV = "div";
     public static readonly string OPERATOR_MOD = "mod";
     public static readonly string OPERATOR_SET = "set";
+
+
+    /*EVENT ID*/
+    public const int EVENT_CLICK = 1001;
+    public const int EVENT_TOUCH = 1002;
+
+    public static readonly string TARGET_NAME_LABEL = "name_target";
 }

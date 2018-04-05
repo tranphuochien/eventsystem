@@ -5,26 +5,21 @@ using Assets;
 
 public class ClickController : MonoBehaviour {
 
+    
 	// Use this for initialization
 	void Start () {
-		
+    
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        //transform.Rotate(0, 2* Time.deltaTime, 0, Space.World);
+        
     }
 
     private void OnMouseDown()
     {
-        string currentKey = transform.name;
-        int currentValue = Global.getFlag(currentKey);
-        if (currentValue == 1)
-        {
-            Global.setFlag(currentKey, 0);
-        } else
-        {
-            Global.setFlag(currentKey, 1);
-        }
+        Dictionary<string, string> paramsData = new Dictionary<string, string>();
+        paramsData.Add(Constant.TARGET_NAME_LABEL, transform.name);
+        EventsManager.processEvent(Constant.EVENT_TOUCH, paramsData);
     }
 }
