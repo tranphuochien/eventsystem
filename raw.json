@@ -105,6 +105,33 @@
                "operator_type":"set"
             }
          ]
+      },
+	  {  
+         "name":"show-panel",
+         "action":{  
+            "name":"show-panel",
+            "parameters":{  
+               "scale":1,
+               "target":"globalInstance",
+               "type":"show-panel",
+               "action":"show-panel"
+            },
+            "return_code": 101
+         },
+         "pre_conditions":[  
+            {  
+               "pre_condition":[  
+                  {  
+                     "flagId":"globalInstance",
+                     "value":0,
+                     "comparator":"greater_than"
+                  }
+               ]
+            }
+         ],
+         "post_actions":[  
+           
+         ]
       }
    ]
 }

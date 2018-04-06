@@ -11,6 +11,7 @@ namespace Assets
     {
         public static Dictionary<string, int> _flag = new Dictionary<string, int>();
         public static Dictionary<string, GameObject> _items = new Dictionary<string, GameObject>();
+        public static Dictionary<int, String> m_instanceMap = new Dictionary<int, String>();
 
         public static int getFlag(string key)
         {
@@ -31,6 +32,7 @@ namespace Assets
 
         public static string RegisterItem(string id, GameObject item)
         {
+            m_instanceMap.Add(item.GetInstanceID(), id);
             _items.Add(id, item);
             return id;
         }

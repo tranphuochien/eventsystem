@@ -7,6 +7,7 @@ public static class Constant
     public static readonly string ACTION_SHOW_OBJECT = "show-object";
     public static readonly string ACTION_HIDE_OBJECT = "hide-object";
     public static readonly string ACTION_ROTATE_OBJECT = "rotate-object";
+    public static readonly string ACTION_SHOW_PANEL = "show-panel";
 
     public static readonly string COMPARATOR_EQUAL = "equal";
     public static readonly string COMPARATOR_GREATER_THAN = "greater_than";

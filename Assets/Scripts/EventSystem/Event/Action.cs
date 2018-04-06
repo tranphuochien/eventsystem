@@ -61,6 +61,24 @@ namespace Assets.Event
         }
     }
 
+    public class ShowPanel : ActionType
+    {
+        public override void DoAction(GameObject gameObject, ParamsRaw paramsRaw = null)
+        {
+            //Clone
+            UnityEngine.Object.Destroy(GameObject.Find("globalInstance"));
+            int curId = Global.getFlag("globalInstance");
+            String name = Global.m_instanceMap[curId];
+            
+            gameObject = UnityEngine.Object.Instantiate(Global.GetItem(name));
+            gameObject.transform.parent = GameObject.Find("Main Camera").transform.GetChild(0);
+            gameObject.transform.localPosition = new Vector3(-1.7f, 3.1f, 2.7f);
+            gameObject.name = "globalInstance";
+            gameObject.SetActive(true);
+ 
+        }
+    }
+
     public static class ActionsManager
     {
         private static Dictionary<string, ActionType> _actions = new Dictionary<string, ActionType>();
@@ -73,6 +91,7 @@ namespace Assets.Event
             _actions.Add(Constant.ACTION_SHOW_OBJECT, new ShowObject());
             _actions.Add(Constant.ACTION_HIDE_OBJECT, new HideObject());
             _actions.Add(Constant.ACTION_ROTATE_OBJECT, new RotateObject());
+            _actions.Add(Constant.ACTION_SHOW_PANEL, new ShowPanel());
             isInit = true;
         }
 

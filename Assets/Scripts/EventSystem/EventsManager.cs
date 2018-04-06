@@ -55,6 +55,7 @@ public class EventsManager : MonoBehaviour {
             return;
         }
         int currentValue = Global.getFlag(nameTarget);
+        Global.setFlag("globalInstance", Global.GetItem(nameTarget).GetInstanceID());
         if (currentValue == 1)
         {
             Global.setFlag(nameTarget, 0);
