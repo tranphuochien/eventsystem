@@ -107,14 +107,14 @@
          ]
       },
 	  {  
-         "name":"show-panel",
+         "name":"change-object",
          "action":{  
-            "name":"show-panel",
+            "name":"change-object",
             "parameters":{  
                "scale":1,
                "target":"globalInstance",
-               "type":"show-panel",
-               "action":"show-panel"
+               "type":"change-object",
+               "action":"change-object"
             },
             "return_code": 101
          },
@@ -131,6 +131,92 @@
          ],
          "post_actions":[  
            
+         ]
+      },
+	  {  
+         "name":"show-panel",
+         "action":{  
+            "name":"show-panel",
+            "parameters":{  
+               "scale":1,
+               "target":"Screen",
+               "type":"show-panel",
+               "action":"show-panel"
+            },
+            "return_code": 102
+         },
+         "pre_conditions":[  
+            {  
+               "pre_condition":[  
+                  {  
+                     "flagId":"globalInstance",
+                     "value":0,
+                     "comparator":"greater_than"
+                  },
+				  {  
+                     "flagId":"isShown",
+                     "value":0,
+                     "comparator":"equal"
+                  }
+               ]
+            }
+         ],
+         "post_actions":[
+			{  
+               "return_code":102,
+               "flagId":"isShown",
+               "value":1,
+               "operator_type":"set"
+            }
+         ]
+      },
+	  {  
+         "name":"hide-panel",
+         "action":{  
+            "name":"hide-panel",
+            "parameters":{  
+               "scale":1,
+               "target":"Screen",
+               "type":"hide-panel",
+               "action":"hide-panel"
+            },
+            "return_code": 103
+         },
+         "pre_conditions":[  
+            {  
+               "pre_condition":[  
+                  {  
+                     "flagId":"CloseBtn",
+                     "value":1,
+                     "comparator":"equal"
+                  },
+				  {  
+                     "flagId":"isShown",
+                     "value":1,
+                     "comparator":"equal"
+                  }
+               ]
+            }
+         ],
+         "post_actions":[  
+            {  
+               "return_code":103,
+               "flagId":"CloseBtn",
+               "value":0,
+               "operator_type":"set"
+            },
+			{  
+               "return_code":103,
+               "flagId":"globalInstance",
+               "value":0,
+               "operator_type":"set"
+            },
+			{  
+               "return_code":103,
+               "flagId":"isShown",
+               "value":0,
+               "operator_type":"set"
+            }
          ]
       }
    ]

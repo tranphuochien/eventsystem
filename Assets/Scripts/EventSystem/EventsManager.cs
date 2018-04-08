@@ -48,14 +48,25 @@ public class EventsManager : MonoBehaviour {
     static private void handleTouchEvent(Dictionary<string, string> paramsData)
     {
         String nameTarget;
+        String groupTarget;
         paramsData.TryGetValue(Constant.TARGET_NAME_LABEL, out nameTarget);
+        paramsData.TryGetValue(Constant.TARGET_GROUP_LABEL, out groupTarget);
         
-        if (nameTarget == null)
+        if (nameTarget == null || groupTarget == null)
         {
             return;
         }
         int currentValue = Global.getFlag(nameTarget);
-        Global.setFlag("globalInstance", Global.GetItem(nameTarget).GetInstanceID());
+
+        switch (groupTarget)
+        {
+            case "Characters":
+                Global.setFlag("globalInstance", Global.GetItem(nameTarget).GetInstanceID());
+                break;
+            case "Panel":
+                break;
+        }
+        
         if (currentValue == 1)
         {
             Global.setFlag(nameTarget, 0);

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Script.EventSystem.Global;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Assets.Event
 {
@@ -49,7 +50,7 @@ namespace Assets.Event
     {
         public override void DoAction(GameObject gameObject, ParamsRaw paramsRaw = null)
         {
-             gameObject.transform.Rotate(0, 30* Time.deltaTime, 0, Space.World);
+             gameObject.transform.Rotate(0, 0, 30 * Time.deltaTime, Space.World);
         }
     }
 
@@ -61,21 +62,46 @@ namespace Assets.Event
         }
     }
 
-    public class ShowPanel : ActionType
+    public class ChangeObjectDetail : ActionType
     {
         public override void DoAction(GameObject gameObject, ParamsRaw paramsRaw = null)
         {
-            //Clone
+            if (Global.curInstanceObject == Global.getFlag("globalInstance"))
+            {
+                return;
+            }
+
             UnityEngine.Object.Destroy(GameObject.Find("globalInstance"));
             int curId = Global.getFlag("globalInstance");
+            Global.curInstanceObject = curId;
             String name = Global.m_instanceMap[curId];
             
             gameObject = UnityEngine.Object.Instantiate(Global.GetItem(name));
             gameObject.transform.parent = GameObject.Find("Main Camera").transform.GetChild(0);
-            gameObject.transform.localPosition = new Vector3(-1.7f, 3.1f, 2.7f);
+            gameObject.transform.localPosition = new Vector3(-1.86f, 3.1f, 1.94f);
+            gameObject.transform.localScale = new Vector3(1, 1, 1);
+            gameObject.transform.eulerAngles = new Vector3(40, 150, 10);
+            gameObject.AddComponent<Rotate> ();
             gameObject.name = "globalInstance";
-            gameObject.SetActive(true);
- 
+            gameObject.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
+        }
+    }
+
+    public class ShowPanel : ActionType
+    {
+        public override void DoAction(GameObject gameObject, ParamsRaw paramsRaw = null)
+        {
+            GameObject screen = Global.GetItem("Screen");
+            screen.GetComponent<Slide>().SlideIn();
+        }
+    }
+
+    public class HidePanel : ActionType
+    {
+        public override void DoAction(GameObject gameObject, ParamsRaw paramsRaw = null)
+        {
+            GameObject screen = Global.GetItem("Screen");
+            screen.GetComponent<Slide>().SlideOut();
         }
     }
 
@@ -91,7 +117,9 @@ namespace Assets.Event
             _actions.Add(Constant.ACTION_SHOW_OBJECT, new ShowObject());
             _actions.Add(Constant.ACTION_HIDE_OBJECT, new HideObject());
             _actions.Add(Constant.ACTION_ROTATE_OBJECT, new RotateObject());
+            _actions.Add(Constant.ACTION_CHANGE_OBJECT_DETAIL, new ChangeObjectDetail());
             _actions.Add(Constant.ACTION_SHOW_PANEL, new ShowPanel());
+            _actions.Add(Constant.ACTION_HIDE_PANEL, new HidePanel());
             isInit = true;
         }
 

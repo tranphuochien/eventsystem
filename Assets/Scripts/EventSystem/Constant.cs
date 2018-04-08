@@ -8,6 +8,8 @@ public static class Constant
     public static readonly string ACTION_HIDE_OBJECT = "hide-object";
     public static readonly string ACTION_ROTATE_OBJECT = "rotate-object";
     public static readonly string ACTION_SHOW_PANEL = "show-panel";
+    public static readonly string ACTION_HIDE_PANEL = "hide-panel";
+    public static readonly string ACTION_CHANGE_OBJECT_DETAIL = "change-object";
 
     public static readonly string COMPARATOR_EQUAL = "equal";
     public static readonly string COMPARATOR_GREATER_THAN = "greater_than";
@@ -28,4 +30,5 @@ public static class Constant
     public const int EVENT_TOUCH = 1002;
 
     public static readonly string TARGET_NAME_LABEL = "name_target";
+    public static readonly string TARGET_GROUP_LABEL = "group_target";
 }

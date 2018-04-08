@@ -20,6 +20,7 @@ public class ClickController : MonoBehaviour {
     {
         Dictionary<string, string> paramsData = new Dictionary<string, string>();
         paramsData.Add(Constant.TARGET_NAME_LABEL, transform.name);
+        paramsData.Add(Constant.TARGET_GROUP_LABEL, "Characters");
         EventsManager.processEvent(Constant.EVENT_TOUCH, paramsData);
     }
 }

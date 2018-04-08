@@ -29,13 +29,18 @@ public class ApiController : MonoBehaviour
         Global.RegisterItem("cube2", this.gameObject.transform.GetChild(1).gameObject);
         Global.RegisterItem("cube3", this.gameObject.transform.GetChild(2).gameObject);
         Global.RegisterItem("cube4", this.gameObject.transform.GetChild(3).gameObject);
+        Global.RegisterItem("Screen", GameObject.Find("Main Camera").transform.GetChild(0).gameObject);
+        Global.RegisterItem("CloseBtn", GameObject.Find("Main Camera").transform.GetChild(0).transform.GetChild(0).Find("CloseBtn").gameObject);
         Global.RegisterItem("globalInstance", GameObject.Find("Main Camera").transform.GetChild(0).transform.GetChild(0).gameObject);
 
         Global.setFlag("cube1", 0);
         Global.setFlag("cube2", 0);
         Global.setFlag("cube3", 0);
         Global.setFlag("cube4", 0);
+        Global.setFlag("Screen", 0);
+        Global.setFlag("CloseBtn", 1);
         Global.setFlag("globalInstance", 0);
+        Global.setFlag("isShown", 1);
     }
 
     // Update is called once per frame
